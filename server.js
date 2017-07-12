@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
+app.use(express.static('public'));
 
 
 app.listen(process.env.PORT || 3000, function(err) {  // this is changed-- Heroku knows what
