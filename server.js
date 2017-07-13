@@ -40,21 +40,58 @@ var RSchema = new mongoose.Schema ({
 );
 
 
-var Restaurants = mongoose.model('restaurants', RSchema);
+var Restaurant = mongoose.model('restaurants', RSchema);
 
-
-// app.get('/get-restaurants', function(req, res){
+// app.post('/restaurants', function (req, res){
+// 	console.log("/restaurant endpoint getting hit");
 	
-// 	Restaurants.find({hunger: $("#hunger").val()}, function(err, res){
+// 	var restaurant = new Restaurant(req.body);
+
+// 	restaurant.save(function(err){
+// 		console.log(restaurant)
+// 		
+// 			};
+// });
+
+// 	});
+
+// app.get('/restaurants', function(request, response) {  
+// 	Restaurant.find({},function(err, Restaurant){
 // 		if(err){
-// 			console.log(err);
+// 			console.log(err)
 // 		}else{
-// 			console.log(res.body);
-// 			res.send(Restaurants);
-			
+// 			response.json(Restaurant);
 // 		}
+// 	});
+// });
+
+app.post('/restaurants', function(request, response) {  
+	console.log(request.body.hunger);
+	Restaurant.find({hunger: (request.body.hunger)},function(err, Restaurant){
+		if(err){
+			console.log(err)
+		}else{
+			console.log(Restaurant);
+			response.send(Restaurant);
+		};
+});
+});
+
+
+// app.post('/firstname', function (req, res){
+// 	console.log("/firstname endpoint getting hit");
+// 	var firstname = new Firstname(req.body);
+		
+// 		console.log(firstname);
+// 		firstname.save(function (err){
+// 			res.send(firstname);
+// 		});
 
 // });
+
+
+
+
 // });
 
 // app.use(express.static('public'));
@@ -81,16 +118,7 @@ var Restaurants = mongoose.model('restaurants', RSchema);
 // var Firstname = mongoose.model('names', FSchema)
 
 
-// app.post('/firstname', function (req, res){
-// 	console.log("/firstname endpoint getting hit");
-// 	var firstname = new Firstname(req.body);
-		
-// 		console.log(firstname);
-// 		firstname.save(function (err){
-// 			res.send(firstname);
-// 		});
 
-// });
 
 //  app.get('/restaurants', function (req, res){
 
@@ -113,40 +141,9 @@ var Restaurants = mongoose.model('restaurants', RSchema);
 // 	});
 // });
 
-// app.get('/todo-app', function(request, response) {  
-// 	Todo.find({},function(err,todo){
-// 		if(err){
-// 			console.log(err)
-// 		}else{
-// 			console.log(todo);
-// 		}
-// 	});
-// });
 
-app.post('/restaurants', function (req, res){
 
-	var restaurant = new Restaurant();
 
-	restaurant ={
-	"name": "Juan's Flying Burrito",
-	"hunger": 1,
-	"price": 1,
-	"alcohol": true,
-	"carryout": true,
-	"fancy": 1,
-	"ID": 1,
-
-	};
-	restaurant.save(function(err){
-		console.log(restaurant)
-		if (err){
-				res.send(err)
-		}else{
-				res.json("Restaurant added!")
-			};
-});
-
-	});
 
 
 
@@ -220,7 +217,7 @@ app.post('/restaurants', function (req, res){
 // 	"fancy": 6,
 // 	"ID": 6,
 // }
-// // ];
+// ];
 
 
 
@@ -349,10 +346,7 @@ app.post('/restaurants', function (req, res){
 // console.log(AllRestaurants);
 
 
-// 	var match = AllRestaurants.filter(function(AllRestaurants){
-//   return AllRestaurants.hunger == 1;
-//   response.send(match);
-// });
+
 
 
 
